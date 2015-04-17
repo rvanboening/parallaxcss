@@ -1,0 +1,57 @@
+h1{
+  position: center;
+}
+
+/* Defining the height and perspective 
+   style properties of an element will lock the perspective to
+   its centre, creating a fixed origin 3D viewport*/
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto; 
+/* Overflow-y will allow the content inside the 
+  element to scroll in the usual way, 
+  but now descendant elements will be rendered 
+  relative to the fixed perspective. 
+  This is the key to creating the parallax effect. */
+}
+
+/* defines a layer of content to which the parallax effect will be applied */
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* These are used to determine the scrolling speed of a 
+   parallax element by translating it along the Z axis */
+
+.parallax__layer--base {
+  transform: translateZ(0);
+}
+/* To counter this we need to apply a scale() 
+   transform to the element so that it appears 
+   to be rendered at its original size: */
+.parallax__layer--back {
+  transform: translateZ(-1px);
+}
+
+/* further the value is from 0 the more 
+   pronounced the parallax effect 
+   (i.e. translateZ(-10px) will scroll slower 
+   than translateZ(-1px) */
+
+.parallax__layer--deep {
+  transform: translateZ(-4px);
+}
+
+.parallax__group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+
+
